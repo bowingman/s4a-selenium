@@ -15,7 +15,8 @@ XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
 TIMEOUT = 20
 
 st.title("Test Selenium")
-st.markdown("You should see some random Football match text below in about 21 seconds")
+st.markdown(
+    "You should see some random Football match text below in about 21 seconds")
 
 firefoxOptions = Options()
 firefoxOptions.add_argument("--headless")
@@ -36,6 +37,6 @@ except TimeoutException:
     driver.quit()
 
 time.sleep(10)
-elements = driver.find_elements_by_xpath(XPATH)
+elements = driver.find_elements(By.XPATH, XPATH)
 st.write([el.text for el in elements])
 driver.quit()
