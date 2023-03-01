@@ -73,16 +73,3 @@ if __name__ == '__main__':
         print("Thread {}: {}".format(i, thread.name))
 
     print("Started Main")
-
-    if not is_calc_thread:
-        thread = threading.Thread(target=calc_num, name="calc_num")
-        thread.start()
-
-    if not is_power_thread:
-        thread = threading.Thread(target=power_num)
-        thread.start()
-
-    print("Next Thread List")
-    running_threads = enumerate(list(threading.enumerate()))
-    for i, thread in running_threads:
-        print("Thread {}: {}".format(i, thread.name))
