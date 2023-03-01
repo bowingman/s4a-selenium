@@ -11,6 +11,23 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.firefox import GeckoDriverManager
 
+
+if __name__ == '__main__':
+    print("__main__")
+
+    is_calc_thread, is_power_thread = False, False
+    print("Current Thread!")
+    running_threads = enumerate(list(threading.enumerate()))
+
+    for i, thread in running_threads:
+        if "calc_num" in thread.name:
+            print("Already interval exists")
+            is_calc_thread = True
+        print("Thread {}: {}".format(i, thread.name))
+
+    print("Started Main")
+
+
 URL = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
 XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
 TIMEOUT = 20
@@ -57,19 +74,3 @@ def power_num():
         time.sleep(5)
         print('POWER_NUM', i)
         i = i * 1.2
-
-
-if __name__ == '__main__':
-    print("__main__")
-
-    is_calc_thread, is_power_thread = False, False
-    print("Current Thread!")
-    running_threads = enumerate(list(threading.enumerate()))
-
-    for i, thread in running_threads:
-        if "calc_num" in thread.name:
-            print("Already interval exists")
-            is_calc_thread = True
-        print("Thread {}: {}".format(i, thread.name))
-
-    print("Started Main")
